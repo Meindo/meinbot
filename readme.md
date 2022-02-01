@@ -4,11 +4,11 @@ MeinBot is an inteligent ai that can do lots of things relevent to pvp.
 # Features
 MeinBot has an varity of features, all listed here
 
-Guarding: Defend a spefic block from all mobs
-Exellent pvp: It is very good a pvping other players from 1.8 pvp to 1.18 pvp. Using the mineflayer-pvp package
-Automatic Gapples: When its health is under 10 it will attemp to eat golden apples until its health is higher again. Using the mineflayer-autoeat package
-Automatic Armor Equipment: Automaticly equip the best armor from the bot. Using the mineflayer-armor-manager package
-Very good ai pathfinding: MeinBot is great at finding its way in a minecraft world. Using the mineflayer-navigation, mineflayer-scaffold and mineflayer-pathfinding packages
+- Guarding: Defend a spefic block from all mobs
+- Exellent pvp: It is very good a pvping other players from 1.8 pvp to 1.18 pvp. Using the mineflayer-pvp package
+- Automatic Gapples: When its health is under 10 it will attemp to eat golden apples until its health is higher again. Using the mineflayer-autoeat package
+- Automatic Armor Equipment: Automaticly equip the best armor from the bot. Using the mineflayer-armor-manager package
+- Very good ai pathfinding: MeinBot is great at finding its way in a minecraft world. Using the mineflayer-navigation, mineflayer-scaffold and mineflayer-pathfinding packages
 
 # Installation
 To install MeinBot simply clone or download the files in this repo and run.
