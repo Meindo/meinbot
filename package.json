@@ -1,0 +1,24 @@
+{
+  "name": "meinbot",
+  "version": "1.0.0",
+  "description": "A bot for mc made by meindomc",
+  "main": "meinbot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MeindoMC",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "minecraft-data": "^2.112.0",
+    "mineflayer": "^3.15.0",
+    "mineflayer-armor-manager": "^1.4.2",
+    "mineflayer-auto-eat": "^2.3.3",
+    "mineflayer-navigate": "^0.0.10",
+    "mineflayer-pathfinder": "^1.9.1",
+    "mineflayer-pvp": "^1.0.2",
+    "mineflayer-scaffold": "^1.0.0",
+    "mineflayer-web-inventory": "^1.6.3",
+    "prismarine-viewer": "^1.22.0"
+  }
+}
