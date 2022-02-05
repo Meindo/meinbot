@@ -11,18 +11,19 @@ MeinBot has an varity of features, all listed here
 - Very good ai pathfinding: MeinBot is great at finding its way in a minecraft world. Using the mineflayer-navigation, mineflayer-scaffold and mineflayer-pathfinding packages
 
 # Installation
-To install MeinBot simply clone or download the files in this repo and run.
+To install MeinBot simply clone or download the files in this repo and run the installer.
  ```sh
- npm install
+ ./installer.sh
  ```
+NOTE: It can also manually be installed by downloading nodejs and running npm install.
 
 # Requirements
 MeinBot is build on mineflayer and needs nodejs and npm to function
 
 # Starting the bot
-To start the bot make sure you have everything installed and have run npm install, then run node meinbot.js <host> <port> [<version>] [<name>] [<password>]
+To start the bot make sure you have everything installed and have run npm install, then run "node meinbot.js <host> <port> [<version>] [<name>] [<password>]"
 This bot can run without a password, however it can only join cracked (Offline mode) servers
-Default value for name is MeinBot
+Default value for the bots name is MeinBot
 
 # IMPORTANT
 This bot has an variable in the main js file called 'usrNameOfOwnerDC'. Change this to your in game minecraft name to get full acces to the bot commands
@@ -39,8 +40,6 @@ This bot has an variable in the main js file called 'usrNameOfOwnerDC'. Change t
 # NOTE
 This is and side project of mine i made it entirely for fun. Dont expect much from it, tho it is suprisingly good at fighting.
 And i know that its not the best code in the world but it does ok.'
-- HOW LONG DID IT TAKE ME TO CREATE THIS THING? Today at this push its 4 days.
+- HOW LONG DID IT TAKE ME TO CREATE THIS THING? Today at this push its 8 days.
 - WIL I BE CONSTANTLY UPDATING THIS? I will try my best, but i dont know what features to add and i also dont have a lot of time. I hope to not make this depreciated.
 - CAN I REPORT BUGS/ASK FOR FEATURES? Im not sure if much people are going to but sure!
-- WHY? As i said its and side project that i started for fun. I thought it would be usefull for other people in the comunity to have a base so i published it.
-- WHAT IS THIS WRITTEN IN? Do you have problems with reading? ITS ONE FILE OF JAVASCRIPT.
