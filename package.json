@@ -1,13 +1,13 @@
 {
   "name": "meinbot",
-  "version": "1.2.1",
+  "version": "1.4",
   "description": "A bot for mc made by meindomc",
   "main": "meinbot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "MeindoMC",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
     "minecraft-data": "^2.112.0",

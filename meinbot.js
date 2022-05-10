@@ -1,30 +1,35 @@
 #!/usr/bin/env node
 
-//Made by MeindoMC in 2022
-//Version 1.2.1
+//Copyright 2022 MeindoMC
+//This file is licensed under the MIT license
+//Version 1.4
+
 const mf = require('mineflayer')
 const pvp = require('mineflayer-pvp').plugin
 const armorManager = require('mineflayer-armor-manager')
-const inventoryViewer = require('mineflayer-web-inventory')
+
+//WEBSERVERS. Will automatically disable if the [disableWeb] argument is set to true
+if(process.argv[4] === "true"){
+    var inventoryViewer = require('mineflayer-web-inventory');
+    var { mineflayer: mineflayerViewer } = require('prismarine-viewer');
+}
+
 const autoeat = require("mineflayer-auto-eat")
 const chalk = require("chalk")
 const navigatePlugin = require('mineflayer-navigate')(mf);
 const scaffoldPlugin = require('mineflayer-scaffold')(mf);
-const plugin = require('mineflayer-pvp')
 const { pathfinder, Movements, goals} = require('mineflayer-pathfinder')
-const { mineflayer: mineflayerViewer } = require('prismarine-viewer')
 
-let attackAll = false;
-const usrNameOfOwnerDC = process.argv[6] || "Steve";
+const usrNameOfOwnerDC = process.argv[7] || "Steve";
 
 //start boilerplate
 
 const options = {
     host: process.argv[2], 
     port: parseInt(process.argv[3]),
-    username: process.argv[5] ? process.argv[5] : 'MeinBot',
-    password: process.argv[7],
-    version: process.argv[4]
+    username: process.argv[6] ? process.argv[7] : 'MeinBot',
+    password: process.argv[8],
+    version: process.argv[5]
 }
 
 const invOptions = {
@@ -32,12 +37,20 @@ const invOptions = {
 }
 
 const bot = mf.createBot(options)
-inventoryViewer(bot, invOptions)
+
+if(process.argv[4] === "true"){
+    inventoryViewer(bot, invOptions)
+    bot.once('spawn', () =>{
+        mineflayerViewer(bot, { port: 3007, firstPerson: true })
+    })
+}
+
 
 bot.loadPlugin(pathfinder)
 bot.loadPlugin(armorManager)
 bot.loadPlugin(pvp)
 bot.loadPlugin(autoeat)
+bot
 navigatePlugin(bot)
 scaffoldPlugin(bot)
 
@@ -49,8 +62,8 @@ bot.on('spawn', () =>{
     }, 500)
 })
 
-if (process.argv.length < 4 || process.argv.length > 6) {
-    console.log('Usage : node meinbot.js <host> <port> [<version>] [<name>] [<name of the owner>] [<password>]')
+if (process.argv.length < 4 || process.argv.length > 8) {
+    console.log('Usage : node meinbot.js <host> <port> [<disableWeb>] [<version>] [<name>] [<name of the owner>] [<password>]')
     process.exit(1)
   }
 
@@ -77,19 +90,20 @@ bot.on('kicked', (reason, loggedIn) => {
     console.log(reason, loggedIn)
 });
 
-//Message and command handling  
+//Message and command handling 
 bot.on('chat', (username, message) => {
     if(username === 'MeinBot') return
     const player = bot.players[username]
     switch(message){
         case "meinbot":
-            setTimeout( () => bot.chat('MeinBot v1.2.1'), 100)
+            setTimeout( () => bot.chat('MeinBot v1.4'), 100)
             setTimeout( () => bot.chat('CMDS:'), 150)
             setTimeout( () => bot.chat('fight'), 200)
             setTimeout( () => bot.chat('guard'), 250)
             setTimeout( () => bot.chat('stop'), 300)
             setTimeout( () => bot.chat('dc'), 350)
-            setTimeout( () => bot.chat('come'), 400)    
+            setTimeout( () => bot.chat('come'), 400)
+            setTimeout( () => bot.chat('eat'), 450)  
         break;
         case "meinbot come":
             var target = bot.players[username].entity;
@@ -147,9 +161,6 @@ bot.on('chat', (username, message) => {
 
 })
 
-bot.once('spawn', () =>{
-    mineflayerViewer(bot, { port: 3007, firstPerson: true })
-})
 
 let guardPos = null
 
@@ -201,22 +212,21 @@ bot.on('physicTick', () => {
     if(bot.health < 10){
         const prevItem = bot.heldItem
         const gapple = bot.inventory.items().find(item => item.name.includes('apple'))
-        const pot = bot.inventory.items().find(item => item.name.includes('Potion of Healing'))
+        const pot = bot.inventory.items().find(item => item.name.includes('potion'))
         if(gapple){
             bot.equip(gapple)
             bot.autoEat.eat(function (err) {
             if(err){
                 return
-            } else{
+            } else {
                 console.log(chalk.yellow('I ate an apple!'))
             }
             bot.equip(prevItem) 
         })
         } else if(pot){
             bot.equip(pot)
-            bot.lookAt(bot)
-            bot.consume()
-            
+            bot.autoEat.eat()
+            bot.equip(prevItem)
         } else{
             console.log(chalk.red("Could not find apple or potion in inventory of player"))
         }
